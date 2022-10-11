@@ -1,0 +1,1 @@
+Space.create(space_name: "Sloth Space 1", description: "Warm Sloth den, with lots of worms to eat", price_per_night: 20, available_from: "10/10/2022", available_to: "11/10/2022")
