@@ -12,7 +12,7 @@
 <body>
   <h1>SPACES</h1>
   <div>
-  <%= @spaces.each do |space| %>
+  <% @spaces.each do |space| %>
     <h2> <%= space.space_name %> <%= space.description %> <%= space.price_per_night %> <%= space.available_from %> <%= space.available_to %> <br><br> </h2>
     <% end %>
   </div>
