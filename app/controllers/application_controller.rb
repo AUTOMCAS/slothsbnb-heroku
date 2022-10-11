@@ -10,4 +10,16 @@ class ApplicationController < Sinatra::Base
   get '/spaces/new' do
     return erb(:spaces_new)
   end
+
+	post '/spaces/new' do
+		@space = Space.new(
+			space_name: params[:space_name],
+			description: params[:description] ,
+			price_per_night: params[:price_per_night],
+			available_to: params[:available_to],
+			available_from: params[:available_from]
+		)
+		
+		return erb(:spaces_new)
+	end
 end

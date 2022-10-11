@@ -21,13 +21,42 @@ describe ApplicationController do
   # one test suite for each set of related features),
   # you can duplicate this test file to create a new one.
 
+  context 'User creates new space' do
+    context 'GET /spaces/new' do
+      it 'should get a Create New Space page' do
+        response = get('/spaces/new')
 
-  context 'GET /spaces/new' do
-    it 'should get a Create New Space page' do
-      response = get('/spaces/new')
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<form action="/spaces/new"')
+      end
+    end
 
-      expect(response.status).to eq(200)
-      expect(response.body).to include('<form action="/signup" method="POST">')
+    context 'POST /spaces/new' do
+      it 'Successfully adds new space to spaces' do
+        response = post('/spaces/new',
+        space_name: 'Jungle retreat',
+        description: 'A lovely place in the jungle with a waterfall',
+        price_per_night: 300,
+        available_from: '12/10/2022',
+        available_to: '12/07/2023'
+        )
+
+        expect(response.status).to eq(200)
+        expect(response.body).to include('Success! Jungle retreat has been created.')
+      end
+    
+      it 'Fails to add new space to spaces' do
+        response = post('/spaces/new',
+        space_name: '',
+        description: 'A lovely place in the jungle with a waterfall',
+        price_per_night: 300,
+        available_from: '12/10/2022',
+        available_to: '12/07/2023'
+        )
+
+        expect(response.status).to eq(200)
+        expect(response.body).to include("Space name can't be blank")
+      end
     end
   end
 end

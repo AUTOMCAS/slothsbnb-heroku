@@ -23,4 +23,17 @@
 	<input type="submit" value="List this space">
 </br>
 
+<% if @space != nil %>
+	<% if @space.save %>
+	<p>Success! <%= @space.space_name %> has been created.</p>
+	<% else %>
+	<h4>OOPS! Something has gone horribly wrong.</h4>
+	<ul>
+		<% @space.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+		<% end %>
+	</ul>
+	<% end %>
+<% end %>
+
 </form>
