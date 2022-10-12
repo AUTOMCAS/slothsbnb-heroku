@@ -20,6 +20,10 @@ class ApplicationController < Sinatra::Base
     return erb(:spaces_new)
   end
 
+	get '/signup' do
+    return erb(:signup)
+  end
+
 	post '/spaces/new' do
 		@space = Space.new(
 			space_name: params[:space_name],
@@ -31,5 +35,16 @@ class ApplicationController < Sinatra::Base
 		
 		return erb(:spaces_new)
 	end
+
+	post '/signup' do
+		@user = User.new(
+		username: params[:username],
+		email: params[:email],
+		full_name: params[:full_name],
+		password_digest: params[:password_digest],
+		phone_number: params[:phone_number]
+		)
+    return erb(:signup)
+  end
 
 end
