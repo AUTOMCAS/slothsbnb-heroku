@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
 		username: params[:username],
 		email: params[:email],
 		full_name: params[:full_name],
-		password_digest: params[:password_digest],
+		password: params[:password],
 		phone_number: params[:phone_number]
 		)
     return erb(:signup)

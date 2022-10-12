@@ -2,6 +2,21 @@
 <html>
 <head>
 <style>
+
+  @keyframes spinning {
+    from { transform: rotate(-deg) }
+    to { transform: rotate(360deg) }
+  }
+  .spin {
+    animation-name: spinning;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    /* linear | ease | ease-in | ease-out | ease-in-out */
+    animation-timing-function: linear;
+  }
+
+<img src="rocket.png" class="spin"/>
+
 div.fixed {
   position: fixed;
   bottom: 0;
@@ -23,7 +38,7 @@ div.fixed {
 <center>
 <h1>SLOTHSBNB</h1>
 </center>
-<div class="fixed"><img src= https://i.postimg.cc/CMzrpVnq/DALL-E-2022-10-12-10-01-58-Sloth-flying-on-pizza-slice-in-space-logo.png width="100" height="100" frameBorder="0"  allowFullScreen></p></div>
+<div class="spin"><img src= https://i.postimg.cc/2yR0cJxt/DALL-E-2022-10-12-10-01-58-Sloth-flying-on-pizza-slice-in-space-logo-removebg-preview.png width="200" height="200" frameBorder="0" ></p></div>
 
 <%= yield %>
 </body>
