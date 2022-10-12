@@ -24,4 +24,4 @@ class Space < ActiveRecord::Base
   presence: true
 end
 
-# s=Space.new(space_name: 'Makers', description: 'onetwoonetwothew owoeaw onetwoonetwothew owoeaw', price_per_night: 150.54, available_from: '12/12/1912', available_to: '01/01/2021')
+
