@@ -1,21 +1,18 @@
 <html>
-<head>
-<style>
-  body {font-family: Verdana, sans-serif;}
-  body {background-color: lightsteelblue;}
-  h1   {color: black;}
-  h2   {color: black;}
-  p    {color: black;}
-</style>
-</head>
 <center>
 <body>
-  <h1>SPACES</h1>
-  <div>
+
+<h2>BOOK A SPACE</h2>
+
+  <div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
+
   <% @spaces.each do |space| %>
-    <h2> <%= space.space_name %> <%= space.description %> <%= space.price_per_night %> <%= space.available_from %> <%= space.available_to %> <br><br> </h2>
-    <% end %>
+    <h2><div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">
+    <%= space.space_name %> <%= space.description %> <%=  space.price_per_night %> <%= space.available_from %> <%= space.available_to %> <br><br> </h2>
+    <% end %></div>
   </div>
+  
+  </p>
 </center>
 </body>
 </html>

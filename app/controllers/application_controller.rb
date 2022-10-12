@@ -12,4 +12,8 @@ class ApplicationController < Sinatra::Base
 	   @spaces = Space.all
 	   return erb(:spaces)
 	end
+
+	get '/' do
+		return erb(:home)
+ 	end
 end

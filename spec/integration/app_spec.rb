@@ -16,7 +16,7 @@ describe ApplicationController do
 
 
   context 'GET /' do
-    it 'should get the homepage' do
+    xit 'should get the homepage' do
       response = get('/')
 
       expect(response.status).to eq(200)
