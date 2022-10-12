@@ -15,6 +15,7 @@ describe ApplicationController do
     reset_test_data
   end
 
+
   # Write your integration tests below.
   # If you want to split your integration tests
   # accross multiple RSpec files (for example, have
