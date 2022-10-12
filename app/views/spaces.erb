@@ -8,7 +8,8 @@
 
   <% @spaces.each do |space| %>
     <h2><div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">
-    <%= space.space_name %> <%= space.description %> <%=  space.price_per_night %> <%= space.available_from %> <%= space.available_to %> <br><br> </h2>
+    <%= space.space_name.upcase %>
+    <h5><%= space.description %> <%= £ space.price_per_night %> <%= space.available_from %> <%= space.available_to %> <br></h2></h5>
     <% end %></div>
   </div>
   
