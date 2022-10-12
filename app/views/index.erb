@@ -1,0 +1,7 @@
+<% if logged_in? %>
+  Welcome <%= current_user.full_name %>!
+<% end %>
+
+<% if !logged_in? %>
+  Welcome Sloth!
+<% end %>

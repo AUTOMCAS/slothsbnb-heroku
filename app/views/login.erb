@@ -42,16 +42,6 @@
 	<input class='button' type="submit" value="Login">
 </br>
 
-<% if @user != nil %>
-  
-	<h4>OOPS! Something has gone horribly wrong.</h4>
-	<ul>
-	  <% @user.errors.full_messages.each do |error| %>
-		<li><%= error %></li>
-		<% end %>
-	</ul>
-<% end %>
-
 </form>
 </div>
 </center>
