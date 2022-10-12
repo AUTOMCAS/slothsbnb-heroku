@@ -1,0 +1,18 @@
+<html>
+<center>
+<body>
+
+<h2>BOOK A SPACE</h2>
+
+  <div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
+
+  <% @spaces.each do |space| %>
+    <h2><div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">
+    <%= space.space_name %> <%= space.description %> <%=  space.price_per_night %> <%= space.available_from %> <%= space.available_to %> <br><br> </h2>
+    <% end %></div>
+  </div>
+  
+  </p>
+</center>
+</body>
+</html>
