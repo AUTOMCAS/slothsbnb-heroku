@@ -18,7 +18,7 @@ describe ApplicationController do
           expect(response.status).to eq(200)
           expect(response.body).to include('SLOTHY APARTMENT')
           expect(response.body).to include('High-rise working sloth bachelor pad')
-          expect(response.body).to include('30.0')
+          expect(response.body).to include('£30.0')
           expect(response.body).to include('2022-09-17')
           expect(response.body).to include('2022-09-18')
       end
@@ -28,7 +28,7 @@ describe ApplicationController do
           expect(response.status).to eq(200)
           expect(response.body).to include('SLOTH CAVE')
           expect(response.body).to include('Rural, open plan Sloth safe space')
-          expect(response.body).to include('10.0')
+          expect(response.body).to include('£10.0')
           expect(response.body).to include('2022-08-15')
           expect(response.body).to include('2022-08-16')
       end
