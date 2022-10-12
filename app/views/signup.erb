@@ -1,0 +1,35 @@
+<center>
+<form action="/signup" method="POST">
+  <br><label>Username:</label></br>
+  <br><input type="text" name="username" placeholder="Username"></br>
+
+  <br><label>Email:</label></br>
+  <br><input type="text" name="email" placeholder="Email"></br>
+
+  <br><label>Password:</label></br>
+  <br><input type="text" name="password_digest" placeholder="Password"></br>
+
+  <br><label>Phone Number:</label></br>
+  <br><input type="text" name="phone_number" placeholder="Phone Number"></br>
+
+  <br><label>Full Name:</label></br>
+  <br><input type="text" name="full_name" placeholder="Full Name"></br>
+  <br><input class='button' type="submit" value="Sign Up To SLOTHSBNB!">
+
+
+
+<% if @user != nil %>
+	<% if @user.save %>
+	<p>Success! <%= @user.username %> has been created.</p>
+	<% else %>
+	<h4>OOPS! Something has gone horribly wrong.</h4>
+	<ul>
+		<% @user.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+		<% end %>
+	</ul>
+	<% end %>
+<% end %>
+
+</form>
+<center>

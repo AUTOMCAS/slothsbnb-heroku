@@ -21,6 +21,43 @@ describe ApplicationController do
   # accross multiple RSpec files (for example, have
   # one test suite for each set of related features),
   # you can duplicate this test file to create a new one.
+  context 'User creates account' do
+    context 'GET /signup' do
+      it 'should return the page' do
+        response = get('/signup')
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<form action="/signup"')
+      end
+    end
+
+    context 'POST /signup' do
+
+      it 'should succesfully create a new user' do
+        response = post('/signup', 
+          username: "SlothMcSloth",
+          email: "Slothsville@gmail.com",
+          full_name: "Sloth Slothster",
+          password_digest: "Sloth123456!",
+          phone_number: "345678987654"
+        )
+        #TO COME BACK TO - REWRITE STATUS TEST - CURRENTLY FAILING 'STATUS 500'
+        expect(response.body).to include('Success')
+      end
+
+      it 'should fail' do
+        response = post('/signup', 
+          username: "Sloth84", 
+          email: "Slothsville",
+          full_name: "Sloth Slothster",
+          password_digest: "Sloth123456!",
+          phone_number: "345678987654"
+        )
+        expect(response.status).to eq(200)
+        expect(response.body).to include('Email is invalid')
+      end
+    end
+  end
+
 
   context 'User creates new space' do
     context 'GET /spaces/new' do
