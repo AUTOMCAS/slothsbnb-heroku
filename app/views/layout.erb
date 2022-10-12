@@ -6,25 +6,73 @@ div.fixed {
   position: fixed;
   bottom: 0;
   right: 0;
-  width: 125px;
+  width: 160px;
   z-index: -1;
 }
 
   body {font-family: Verdana, sans-serif;}
-  body {background-color: white;}
-  h1   {color: black;}
-  h2   {color: black;}
-  p    {color: black;}
+  body {background-color: #F7E7FB;}
+  h1   {color: #3B3B3B;}
+  h2   {color: #3B3B3B;}
+  p    {color: #3B3B3B;}
+
+  .topnav {
+  background-color: #A478B8;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #E0C2F2;
+  color: black;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
 </style>
+
 </head>
 
 <body>
+<% if logged_in? %>
+  <div class="topnav">
+  <a href="/">Home</a>
+  <a href="/spaces">Spaces</a>
+  <a href="/spaces/new">List a Space</a>
+  </div>
+<% end %>
+
+<% if !logged_in? %>
+  <div class="topnav">
+  <a href="/">Home</a>
+  <a href="/signup">Sign up</a>
+  <a href="/login">Log in</a>
+  </div>
+<% end %>
 
 <center>
 <h1>SLOTHSBNB</h1>
 </center>
-<div class="fixed"><img src= https://i.postimg.cc/CMzrpVnq/DALL-E-2022-10-12-10-01-58-Sloth-flying-on-pizza-slice-in-space-logo.png width="100" height="100" frameBorder="0"  allowFullScreen></p></div>
+<div class="fixed"><img src= https://i.postimg.cc/2yR0cJxt/DALL-E-2022-10-12-10-01-58-Sloth-flying-on-pizza-slice-in-space-logo-removebg-preview.png width="150" height="150" frameBorder="0"  allowFullScreen></p></div>
 
 <%= yield %>
+
+<div class="footer">
+  <p>© Made with love by Sloths, 2022</p>
+</div>
+
 </body>
 </html>
