@@ -20,9 +20,9 @@ class ApplicationController < Sinatra::Base
 
 		if @user && @user.authenticate(params[:password])
 			session[:user_id] = @user.id
-			return erb(:index)
+			redirect '/'
 		else
-			return erb(:login)
+			return erb(:login_failure)
 		end
 	end
   
@@ -56,10 +56,20 @@ class ApplicationController < Sinatra::Base
 		username: params[:username],
 		email: params[:email],
 		full_name: params[:full_name],
-		password_digest: params[:password_digest],
+		password: params[:password],
 		phone_number: params[:phone_number]
 		)
     return erb(:signup)
+  end
+
+  private
+
+  def logged_in?
+    !!session[:user_id]
+  end
+
+  def current_user
+    User.find(session[:user_id])
   end
 
 end
