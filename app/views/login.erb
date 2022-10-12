@@ -1,0 +1,57 @@
+<style>
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	gap: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-bottom: 20px;
+	width: 80px;
+}
+
+.button {
+	transition-duration: 0.4s;
+	background-color: #F5EEF8;
+	color: #34495E;
+	padding: 8px;
+}
+
+.button:hover {
+	background-color: #AF7AC5;
+	color: #34495E;
+}
+</style>
+
+<center>
+<h1>Become a SLOTH!</h1>
+
+<div align='left'class="form">
+<form action="/login" method="POST">
+
+<br><label>Email:</label></br>
+<br><input type="text" name="email" placeholder="Email"></br>
+
+<br><label>Password:</label></br>
+<br><input type="password" name="password" placeholder="Password"></br>
+
+<br>
+	<input class='button' type="submit" value="Login">
+</br>
+
+<% if @user != nil %>
+  
+	<h4>OOPS! Something has gone horribly wrong.</h4>
+	<ul>
+	  <% @user.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+</form>
+</div>
+</center>

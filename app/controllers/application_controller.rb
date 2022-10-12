@@ -8,8 +8,23 @@ class ApplicationController < Sinatra::Base
 	end
   
   get '/' do
-		return erb(:home)
+		return erb(:index)
  	end
+
+  get '/login' do
+	  return erb(:login)
+  end
+
+	post '/login' do
+		@user = User.find_by(email: params[:email])
+
+		if @user && @user.authenticate(params[:password])
+			session[:user_id] = @user.id
+			return erb(:index)
+		else
+			return erb(:login)
+		end
+	end
   
   get '/spaces' do
 	   @spaces = Space.all

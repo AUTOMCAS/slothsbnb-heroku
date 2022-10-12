@@ -22,6 +22,27 @@ describe ApplicationController do
   # one test suite for each set of related features),
   # you can duplicate this test file to create a new one.
 
+  context 'User attempts to log in' do
+    context "GET /login" do
+      it "should get a login page" do
+        response = get('/login')
+
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<form action="/login" method="POST">')
+        
+      end
+    end
+
+    # context "POST /login" do
+    #   it "should successfully login" do
+    #     response = post('/login')
+
+    #   end
+    # end
+  end
+
+
+
   context 'User creates new space' do
     context 'GET /spaces/new' do
       it 'should get a Create New Space page' do
