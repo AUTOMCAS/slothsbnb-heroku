@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :full_name
       t.string :password_digest # Passwords will be converted and stored in a hash
       t.string :email
-      t.integer :phone_number
+      t.string :phone_number
     end
   end
 end
