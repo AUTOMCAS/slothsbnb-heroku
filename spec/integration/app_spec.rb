@@ -60,8 +60,8 @@ describe ApplicationController do
 
 
   context 'User attempts to log in' do
-    context "GET /login" do
-      it "should get a login page" do
+    context 'GET /login' do
+      it 'should get a login page' do
         response = get('/login')
 
         expect(response.status).to eq(200)
@@ -78,7 +78,24 @@ describe ApplicationController do
     # end
   end
 
+  context 'User logs out' do
+    context 'GET /logout' do
+      it 'returns 400 status if not logged in' do
+        response = get('/logout')
 
+        expect(response.status).to eq(400)
+      end
+
+      it 'logs out' do
+        post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+        response = get('/logout')
+       
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<a href="/login">Log in</a>')
+        expect(response.body).to include('<h1>Logout success!')
+      end
+    end
+  end
 
   context 'User creates new space' do
     context 'GET /spaces/new' do
@@ -118,16 +135,4 @@ describe ApplicationController do
       end
     end
   end
-end
-
-
-
-def reset_test_data
-  ActiveRecord::Base.connection_pool.with_connection do |conn|
-    conn.execute("TRUNCATE users, spaces, bookings RESTART IDENTITY")
-  end
-
-  Space.create(user_id: 1, space_name: "Sloth Space", description: "Warm Sloth den, with lots of worms to eat", price_per_night: 20, available_from: "10/10/2022", available_to: "11/10/2022")
-  Space.create(user_id: 1, space_name: "Slothy Apartment", description: "High-rise working sloth bachelor pad", price_per_night: 30, available_from: "17/09/2022", available_to: "18/09/2022")
-  Space.create(user_id: 2, space_name: "Sloth Cave", description: "Rural, open plan Sloth safe space", price_per_night: 10, available_from: "15/08/2022", available_to: "16/08/2022")
 end
