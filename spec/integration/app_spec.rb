@@ -77,8 +77,29 @@ describe ApplicationController do
     #   end
     # end
   end
+  context 'User clicks on space' do
+    context 'GET /spaces/id' do
+      it 'should link to invidual space' do
+        response = get('/spaces/3')
+        expect(response.status).to eq(200)
+        expect(response.body).to include('Sloth Cave')
+      end
+    end
+  end
 
-
+    context 'POST /spaces/id' do
+      it 'should populate bookings database' do
+      post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
+      response = post('/spaces/1',
+        space_id: 1,
+        booking_date: '10/10/2022',
+        pending_confirmation: true, 
+        confirmed: false
+      )
+      expect(response.status).to eq(200)
+      expect(response.body).to include("Booking request has been sent.")
+    end
+  end
 
   context 'User creates new space' do
     context 'GET /spaces/new' do
@@ -92,6 +113,7 @@ describe ApplicationController do
 
     context 'POST /spaces/new' do
       it 'Successfully adds new space to spaces' do
+        post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
         response = post('/spaces/new',
         space_name: 'Jungle retreat',
         description: 'A lovely place in the jungle with a waterfall',
@@ -99,12 +121,12 @@ describe ApplicationController do
         available_from: '12/10/2022',
         available_to: '12/07/2023'
         )
-
         expect(response.status).to eq(200)
         expect(response.body).to include('Success! Jungle retreat has been created.')
       end
     
       it 'Fails to add new space to spaces' do
+        post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
         response = post('/spaces/new',
         space_name: '',
         description: 'A lovely place in the jungle with a waterfall',
@@ -120,14 +142,3 @@ describe ApplicationController do
   end
 end
 
-
-
-def reset_test_data
-  ActiveRecord::Base.connection_pool.with_connection do |conn|
-    conn.execute("TRUNCATE users, spaces, bookings RESTART IDENTITY")
-  end
-
-  Space.create(user_id: 1, space_name: "Sloth Space", description: "Warm Sloth den, with lots of worms to eat", price_per_night: 20, available_from: "10/10/2022", available_to: "11/10/2022")
-  Space.create(user_id: 1, space_name: "Slothy Apartment", description: "High-rise working sloth bachelor pad", price_per_night: 30, available_from: "17/09/2022", available_to: "18/09/2022")
-  Space.create(user_id: 2, space_name: "Sloth Cave", description: "Rural, open plan Sloth safe space", price_per_night: 10, available_from: "15/08/2022", available_to: "16/08/2022")
-end

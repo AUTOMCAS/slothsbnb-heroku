@@ -1,0 +1,60 @@
+<style>
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-color: black;
+	border-width: 2px;
+	border-style: solid;
+	gap: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-bottom: 20px;
+	width: 275px;
+}
+
+.button {
+	transition-duration: 0.4s;
+	background-color: #F5EEF8;
+	color: #34495E;
+	padding: 25px;
+}
+
+.button:hover {
+	background-color: #AF7AC5;
+	color: #34495E;
+}
+</style>
+
+<center>
+<h1><%= @space_by_id.space_name %></h1>
+
+
+<p><i><%= @space_by_id.description %></i></p>
+<p><b> £<%= @space_by_id.price_per_night %> per night</b></p>
+
+
+<br>
+  Pick a night
+</br>
+<br>
+<form action='/spaces/<%= @space_by_id.id %>' method="POST">
+	<input type="date" name="booking_date" min=<%=@space_by_id.available_from%> max=<%=@space_by_id.available_to%>>
+</br>
+<br>
+<br></br>
+	<input class='button' type="submit" value="Book this space">
+</br>
+
+<% if @booking != nil %>
+	<% if @booking.save %>
+	<p>Thank you <%= current_user.full_name %>! Your booking request has been sent.</p>
+	<% else %>
+	<h4>Please choose an available date.</h4>
+	<% end %>
+<% end %>
+
+</form>
+</div>
+</div>
+</center>

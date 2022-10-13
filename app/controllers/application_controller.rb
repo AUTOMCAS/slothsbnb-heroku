@@ -25,21 +25,22 @@ class ApplicationController < Sinatra::Base
 			return erb(:login_failure)
 		end
 	end
-  
+
   get '/spaces' do
 	   @spaces = Space.all
 	   return erb(:spaces)
 	end
- 
-  get '/spaces/new' do
+
+	get '/spaces/new' do
     return erb(:spaces_new)
   end
 
-	get '/signup' do
-    return erb(:signup)
-  end
+	get '/spaces/:id' do
+		@space_by_id = Space.find_by(id: params[:id])
+		return erb(:space)
+ 	end
 
-	post '/spaces/new' do
+	 post '/spaces/new' do
 		@space = Space.new(
       user_id: current_user.id,
 			space_name: params[:space_name],
@@ -51,6 +52,25 @@ class ApplicationController < Sinatra::Base
 		
 		return erb(:spaces_new)
 	end
+
+	post '/spaces/:id' do
+		@booking = Booking.new(
+			user_id: current_user.id,
+			space_id: params[:id],
+			booking_date: params[:booking_date],
+			pending_confirmation: true, 
+			confirmed: false
+		)
+		if @booking.save
+			redirect "/"
+		else 
+			return erb(:booking_failure)
+		end
+	end
+
+	get '/signup' do
+    return erb(:signup)
+  end
 
 	post '/signup' do
 		@user = User.new(
