@@ -11,11 +11,6 @@ describe ApplicationController do
   # class so our tests work.
   let(:app) { ApplicationController.new }
 
-  before(:each) do
-    reset_test_data
-  end
-
-
   # Write your integration tests below.
   # If you want to split your integration tests
   # accross multiple RSpec files (for example, have
