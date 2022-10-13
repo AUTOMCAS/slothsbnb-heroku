@@ -37,7 +37,7 @@ describe ApplicationController do
           username: "SlothMcSloth",
           email: "Slothsville@gmail.com",
           full_name: "Sloth Slothster",
-          password_digest: "Sloth123456!",
+          password: "Sloth123456!",
           phone_number: "345678987654"
         )
         #TO COME BACK TO - REWRITE STATUS TEST - CURRENTLY FAILING 'STATUS 500'
@@ -49,7 +49,7 @@ describe ApplicationController do
           username: "Sloth84", 
           email: "Slothsville",
           full_name: "Sloth Slothster",
-          password_digest: "Sloth123456!",
+          password: "Sloth123456!",
           phone_number: "345678987654"
         )
         expect(response.status).to eq(200)
