@@ -11,11 +11,6 @@ describe ApplicationController do
   # class so our tests work.
   let(:app) { ApplicationController.new }
 
-  before(:each) do
-    reset_test_data
-  end
-
-
   # Write your integration tests below.
   # If you want to split your integration tests
   # accross multiple RSpec files (for example, have
@@ -60,8 +55,8 @@ describe ApplicationController do
 
 
   context 'User attempts to log in' do
-    context "GET /login" do
-      it "should get a login page" do
+    context 'GET /login' do
+      it 'should get a login page' do
         response = get('/login')
 
         expect(response.status).to eq(200)
@@ -98,6 +93,25 @@ describe ApplicationController do
       )
       expect(response.status).to eq(200)
       expect(response.body).to include("Booking request has been sent.")
+      end
+      end
+
+  context 'User logs out' do
+    context 'GET /logout' do
+      it 'returns 400 status if not logged in' do
+        response = get('/logout')
+
+        expect(response.status).to eq(400)
+      end
+
+      it 'logs out' do
+        post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+        response = get('/logout')
+       
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<a href="/login">Log in</a>')
+        expect(response.body).to include('<h1>Logout success!')
+      end
     end
   end
 
@@ -139,6 +153,4 @@ describe ApplicationController do
         expect(response.body).to include("Space name can't be blank")
       end
     end
-  end
-end
 

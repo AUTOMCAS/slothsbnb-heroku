@@ -26,6 +26,15 @@ class ApplicationController < Sinatra::Base
 		end
 	end
 
+	get '/logout' do
+		if logged_in?
+			session.clear
+	  	return erb(:logout)
+		else
+			status 400
+		end
+  end
+  
   get '/spaces' do
 	   @spaces = Space.all
 	   return erb(:spaces)
