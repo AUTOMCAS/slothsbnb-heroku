@@ -9,6 +9,18 @@ RSpec.configure do |config|
   config.order = 'default'
 end
 
+def reset_test_data
+  ActiveRecord::Base.connection_pool.with_connection do |conn|
+    conn.execute("TRUNCATE users, spaces, bookings RESTART IDENTITY")
+  end
+  Space.create(user_id: 1, space_name: "Sloth Space", description: "Warm Sloth den, with lots of worms to eat", price_per_night: 20, available_from: "10/10/2022", available_to: "11/10/2022")
+  Space.create(user_id: 1, space_name: "Slothy Apartment", description: "High-rise working sloth bachelor pad", price_per_night: 30, available_from: "17/09/2022", available_to: "18/09/2022")
+  Space.create(user_id: 2, space_name: "Sloth Cave", description: "Rural, open plan Sloth safe space", price_per_night: 10, available_from: "15/08/2022", available_to: "16/08/2022")
+  User.new(username: "Slothy900", email: "slothy@gmail.com", full_name: "Slothy McSloth", password: "Sloths1234!", phone_number: "7387363626" ).save
+  User.new(username: "Slothster", email: "slothguy@gmail.com", full_name: "Sloth McSlothster", password: "Sloths1234567!", phone_number: "7387866363626" ).save
+
+end
+
 def session
   last_request.env['rack.session']
 end

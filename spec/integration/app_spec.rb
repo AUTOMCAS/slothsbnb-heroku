@@ -55,8 +55,8 @@ describe ApplicationController do
 
 
   context 'User attempts to log in' do
-    context "GET /login" do
-      it "should get a login page" do
+    context 'GET /login' do
+      it 'should get a login page' do
         response = get('/login')
 
         expect(response.status).to eq(200)
@@ -73,7 +73,24 @@ describe ApplicationController do
     # end
   end
 
+  context 'User logs out' do
+    context 'GET /logout' do
+      it 'returns 400 status if not logged in' do
+        response = get('/logout')
 
+        expect(response.status).to eq(400)
+      end
+
+      it 'logs out' do
+        post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+        response = get('/logout')
+       
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<a href="/login">Log in</a>')
+        expect(response.body).to include('<h1>Logout success!')
+      end
+    end
+  end
 
   context 'User creates new space' do
     context 'GET /spaces/new' do

@@ -25,6 +25,15 @@ class ApplicationController < Sinatra::Base
 			return erb(:login_failure)
 		end
 	end
+
+	get '/logout' do
+		if logged_in?
+			session.clear
+	  	return erb(:logout)
+		else
+			status 400
+		end
+  end
   
   get '/spaces' do
 	   @spaces = Space.all
@@ -41,6 +50,7 @@ class ApplicationController < Sinatra::Base
 
 	post '/spaces/new' do
 		@space = Space.new(
+      user_id: current_user.id,
 			space_name: params[:space_name],
 			description: params[:description] ,
 			price_per_night: params[:price_per_night],
