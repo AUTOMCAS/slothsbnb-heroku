@@ -2,9 +2,29 @@
 <center>
 <body>
 
+<style>
+.button {
+	transition-duration: 0.4s;
+	background-color: #F5EEF8;
+	color: #34495E;
+	padding: 25px;
+}
+
+.button:hover {
+	background-color: #AF7AC5;
+	color: #34495E;
+}
+</style>
+
 <h2>BOOK A SPACE</h2>
 
-  <div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
+<form action='/spaces/new'> 
+<input class='button' type="submit" value="List your sloth space!">
+</form>
+
+<br>
+
+<div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
 
   <% @spaces.each do |space| %>
     <h2><div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">

@@ -41,6 +41,7 @@ class ApplicationController < Sinatra::Base
 
 	post '/spaces/new' do
 		@space = Space.new(
+      user_id: current_user.id,
 			space_name: params[:space_name],
 			description: params[:description] ,
 			price_per_night: params[:price_per_night],
