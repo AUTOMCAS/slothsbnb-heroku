@@ -15,6 +15,18 @@
 	color: #34495E;
 }
 
+.sortbutton {
+	transition-duration: 0.4s;
+	background-color: #F5EEF8;
+	color: #34495E;
+	padding: 10px;
+}
+
+.sortbutton:hover {
+	background-color: #AF7AC5;
+	color: #34495E;
+}
+
 </style>
 
 <h2>BOOK A SPACE</h2>
@@ -25,12 +37,21 @@
 
 <br>
 
+<form action='/spaces'>
+<label>Available from: </label>
+<input type="date" name="available_from" value=<%=get_todays_date%> min=<%=get_todays_date%> max="2027-10-14">
+<label>Available to:</label>
+<input type="date" name="available_to" value=<%=get_todays_date%> min=<%=get_todays_date%> max="2027-10-14">
+<input class='sortbutton' type="submit" value="See available spaces">
+</form>
+
+<br>
 <div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
 
   <% @spaces.each do |space| %>  
     <div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">
     <h2><a href="/spaces/<%= space.id %>"> <%= space.space_name.upcase %> </a></h2>
-    <h5><%= space.description %> £<%=space.price_per_night %> <br></h5>
+    <h5><%= space.description %> <br> <br> £<%=space.price_per_night %> per night<br></h5>
     </div>
     <br>
     

@@ -1,7 +1,11 @@
+<center>
 <% if logged_in? %>
-  Welcome <%= current_user.full_name %>!
+  <h2>Welcome <%= current_user.full_name %>!</h2>
 <% end %>
 
 <% if !logged_in? %>
-  Welcome Sloth!
+<h2>Welcome Sloth!</h2>
 <% end %>
+<br>
+<iframe src="https://giphy.com/embed/I8eorWE0QuYYU" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+</center>

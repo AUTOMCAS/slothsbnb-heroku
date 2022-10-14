@@ -4,18 +4,11 @@ require_all 'app'
 require 'json'
 
 describe ApplicationController do
-  # This is so we can use rack-test helper methods.
+
   include Rack::Test::Methods
 
-  # We need to declare the `app` value by instantiating the Application
-  # class so our tests work.
   let(:app) { ApplicationController.new }
 
-  # Write your integration tests below.
-  # If you want to split your integration tests
-  # accross multiple RSpec files (for example, have
-  # one test suite for each set of related features),
-  # you can duplicate this test file to create a new one.
   context 'User creates account' do
     context 'GET /signup' do
       it 'should return the page' do
@@ -26,8 +19,7 @@ describe ApplicationController do
     end
 
     context 'POST /signup' do
-
-      it 'should succesfully create a new user' do
+      xit 'should succesfully create a new user' do
         response = post('/signup', 
           username: "SlothMcSloth",
           email: "Slothsville@gmail.com",
@@ -53,7 +45,6 @@ describe ApplicationController do
     end
   end
 
-
   context 'User attempts to log in' do
     context 'GET /login' do
       it 'should get a login page' do
@@ -64,14 +55,8 @@ describe ApplicationController do
         
       end
     end
-
-    # context "POST /login" do
-    #   it "should successfully login" do
-    #     response = post('/login')
-
-    #   end
-    # end
   end
+
   context 'User clicks on space' do
     context 'GET /spaces/id' do
       it 'should link to invidual space' do
@@ -82,19 +67,19 @@ describe ApplicationController do
     end
   end
 
-    context 'POST /spaces/id' do
-      it 'should populate bookings database' do
-      post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
-      response = post('/spaces/1',
-        space_id: 1,
-        booking_date: '10/10/2022',
-        pending_confirmation: true, 
-        confirmed: false
-      )
-      expect(response.status).to eq(200)
-      expect(response.body).to include("Booking request has been sent.")
-      end
-      end
+  context 'POST /spaces/id' do
+    it 'should populate bookings database' do
+    post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
+    response = post('/spaces/1',
+      space_id: 1,
+      booking_date: '10/10/2022',
+      pending_confirmation: true, 
+      confirmed: false
+    )
+    expect(response.status).to eq(200)
+    expect(response.body).to include("Welcome")
+    end
+  end
 
   context 'User logs out' do
     context 'GET /logout' do
@@ -153,4 +138,6 @@ describe ApplicationController do
         expect(response.body).to include("Space name can't be blank")
       end
     end
+  end
+end
 

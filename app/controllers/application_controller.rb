@@ -12,7 +12,11 @@ class ApplicationController < Sinatra::Base
  	end
 
   get '/login' do
-	  return erb(:login)
+		if logged_in?
+			return erb(:error)
+		else
+	  	return erb(:login)
+		end
   end
 
 	post '/login' do
@@ -29,24 +33,41 @@ class ApplicationController < Sinatra::Base
 	get '/logout' do
 		if logged_in?
 			session.clear
-	  	return erb(:logout)
+	  	redirect "/"
 		else
-			status 400
+			return erb(:error)
 		end
   end
   
   get '/spaces' do
-	   @spaces = Space.all
-	   return erb(:spaces)
+		if logged_in?
+			if params[:available_from] == nil
+				@spaces = Space.all
+			else 
+				@spaces = Space.where(["available_from >= :available_from and available_to <= :available_to",
+				{ available_from: params[:available_from], available_to: params[:available_to] }])
+			end
+			return erb(:spaces)
+		else
+	  	return erb(:error)
+		end
 	end
 
 	get '/spaces/new' do
-    return erb(:spaces_new)
+		if logged_in?
+			return erb(:spaces_new)
+		else
+			return erb(:error)
+		end
   end
 
 	get '/spaces/:id' do
-		@space_by_id = Space.find_by(id: params[:id])
-		return erb(:space)
+		if logged_in?
+			@space_by_id = Space.find_by(id: params[:id])
+			return erb(:space)
+		else
+			return erb(:error)
+		end
  	end
 
 	 post '/spaces/new' do
@@ -78,7 +99,11 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/signup' do
-    return erb(:signup)
+		if logged_in?
+			return erb(:error)
+		else
+			return erb(:signup)
+		end
   end
 
 	post '/signup' do
@@ -100,6 +125,11 @@ class ApplicationController < Sinatra::Base
 
   def current_user
     User.find(session[:user_id])
+  end
+
+	def get_todays_date
+    date = Date.today 
+    date.strftime "%Y-%m-%d"
   end
 
 end
