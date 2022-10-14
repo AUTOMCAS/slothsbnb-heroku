@@ -11,6 +11,10 @@ describe ApplicationController do
   # class so our tests work.
   let(:app) { ApplicationController.new }
 
+  before(:each) do
+    reset_test_data
+  end
+
   # Write your integration tests below.
   # If you want to split your integration tests
   # accross multiple RSpec files (for example, have
@@ -103,7 +107,7 @@ describe ApplicationController do
     end
 
     context 'POST /spaces/new' do
-      it 'Successfully adds new space to spaces' do
+      xit 'Successfully adds new space to spaces' do
         response = post('/spaces/new',
         space_name: 'Jungle retreat',
         description: 'A lovely place in the jungle with a waterfall',
@@ -116,7 +120,7 @@ describe ApplicationController do
         expect(response.body).to include('Success! Jungle retreat has been created.')
       end
     
-      it 'Fails to add new space to spaces' do
+      xit 'Fails to add new space to spaces' do
         response = post('/spaces/new',
         space_name: '',
         description: 'A lovely place in the jungle with a waterfall',
@@ -128,6 +132,25 @@ describe ApplicationController do
         expect(response.status).to eq(200)
         expect(response.body).to include("Space name can't be blank")
       end
+    end
+  end
+
+  context 'returns request page' do
+    it 'returns page' do
+      post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+      response = get('/requests')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Booking date:')
+      expect(response.body).to include('Confirmation pending')
+    end
+
+    it 'displays requests that have been received' do
+      post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+      response = get('/requests')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include("2022-10-10")
     end
   end
 end
