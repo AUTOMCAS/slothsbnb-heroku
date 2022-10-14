@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/reloader'
+require "./app/models/user"
+require "./app/models/booking"
+require "./app/models/space"
 
 class ApplicationController < Sinatra::Base
 
