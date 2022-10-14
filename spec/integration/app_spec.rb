@@ -11,6 +11,10 @@ describe ApplicationController do
   # class so our tests work.
   let(:app) { ApplicationController.new }
 
+  before(:each) do
+    reset_test_data
+  end
+
   # Write your integration tests below.
   # If you want to split your integration tests
   # accross multiple RSpec files (for example, have
@@ -154,3 +158,22 @@ describe ApplicationController do
       end
     end
 
+  context 'returns request page' do
+    it 'returns page' do
+      post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+      response = get('/requests')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Booking date:')
+      expect(response.body).to include('Confirmation pending')
+    end
+
+    it 'displays requests that have been received' do
+      post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+      response = get('/requests')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include("2022-10-10")
+    end
+  end
+end

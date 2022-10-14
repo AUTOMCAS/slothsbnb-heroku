@@ -8,6 +8,10 @@ describe ApplicationController do
 
   let(:app) { ApplicationController.new }
 
+  before(:each) do
+    reset_test_data
+  end
+
     context 'GET /spaces' do
       it 'returns 200 OK and displays list' do
         response = get('/spaces')

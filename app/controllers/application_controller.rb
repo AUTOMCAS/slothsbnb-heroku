@@ -92,6 +92,11 @@ class ApplicationController < Sinatra::Base
     return erb(:signup)
   end
 
+	get '/requests' do
+		@bookings = Booking.where(user_id: current_user.id)
+		return erb(:requests)
+	end
+
   private
 
   def logged_in?
