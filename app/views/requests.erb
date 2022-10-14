@@ -2,15 +2,13 @@
 <div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
   <% @bookings.each do |booking| %>
     <h2><div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">
-    <h3>Space name:<%=booking.space.space_name %></h3>
-    <h3>Booking ID:<%= booking.id %> </h3>
-    <h3>Booking date: <%= booking.booking_date %></h3>
-    <h3>Confimation pending status:</h3>
-    <h5><%= "Booking pending" if booking.pending_confirmation == nil %></h5>
-    <h5><%= booking.pending_confirmation %></h5>
-    <h3>Confirmation status:</h3>
-    <h5><%= "Confirmation pending" if booking.confirmed == nil %></h5>
-    <h5><%= booking.confirmed %></h5>
+    <h5>Space name: <%=booking.space.space_name %></h5>
+    <h5>Booking ID: <%= booking.id %> </h5>
+    <h5>Booking date: <%= booking.booking_date %></h5>
+    <h5>Confimation pending status:</h5>
+    <h5><%= "Booking pending" if booking.pending_confirmation == true %></h5>
+    <h5>Confirmation status:</h5>
+    <h5><%= "Confirmation pending" if booking.confirmed == false %></h5>
   <% end %>
 
 </div>

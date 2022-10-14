@@ -50,6 +50,23 @@ div.fixed {
   width: 100%;
   text-align: center;
 }
+
+.rotate {
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  z-index: -1;
+  animation: rotation 7s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 </style>
 
 </head>
@@ -76,7 +93,7 @@ div.fixed {
 <center>
 <h1>SLOTHSBNB</h1>
 </center>
-<div class="fixed"><img src= https://i.postimg.cc/2yR0cJxt/DALL-E-2022-10-12-10-01-58-Sloth-flying-on-pizza-slice-in-space-logo-removebg-preview.png width="200" height="200" frameBorder="0"  allowFullScreen></p></div>
+<img src="https://i.postimg.cc/2yR0cJxt/DALL-E-2022-10-12-10-01-58-Sloth-flying-on-pizza-slice-in-space-logo-removebg-preview.png" class="rotate" width="150" height="150">
 
 <%= yield %>
 
