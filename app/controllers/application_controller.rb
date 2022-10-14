@@ -1,4 +1,6 @@
-require "./config/environment"
+require 'sinatra'
+require 'sinatra/activerecord'
+require 'sinatra/reloader'
 
 class ApplicationController < Sinatra::Base
 
@@ -6,6 +8,11 @@ class ApplicationController < Sinatra::Base
 		set :views, "app/views"
 		enable :sessions
 	end
+
+	configure :development do
+    register Sinatra::ActiveRecordExtension
+    register Sinatra::Reloader
+  end
   
   get '/' do
 		return erb(:index)

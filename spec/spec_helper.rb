@@ -1,5 +1,5 @@
 ENV["SINATRA_ENV"] = "test"
-require_relative '../config/environment.rb'
+require_relative 'app/controllers/application_controller.rb'
 require 'rack/test'
 require 'capybara/dsl'
 
