@@ -73,13 +73,7 @@ class ApplicationController < Sinatra::Base
   end
 
 	get '/requests' do
-		# @spaces = Space.where(user_id: session[:user_id])
 		@bookings = Booking.where(user_id: current_user.id)
-		#@bookings = Booking.joins(:spaces)
-		# @space_names = Space.where(space_id: booking.id).space_name
-		# space = Space.where(space_id: booking id)
-		# @space_name = space.name
-		# space name using booking space_id
 		return erb(:requests)
 	end
 
