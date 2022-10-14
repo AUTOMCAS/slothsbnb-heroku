@@ -1,4 +1,4 @@
-<div>
+
 <div style="border-width:6px; border-style:solid; border-color:#000000; padding: 1em">
   <% @bookings.each do |booking| %>
     <h2><div style="border-width:4px; border-style:solid; border-color:#000000; padding: 1em">
@@ -9,7 +9,7 @@
     <h5><%= "Booking pending" if booking.pending_confirmation == true %></h5>
     <h5>Confirmation status:</h5>
     <h5><%= "Confirmation pending" if booking.confirmed == false %></h5>
+    </div>
   <% end %>
-
 </div>
 
