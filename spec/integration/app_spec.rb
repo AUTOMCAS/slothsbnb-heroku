@@ -76,6 +76,29 @@ describe ApplicationController do
     #   end
     # end
   end
+  context 'User clicks on space' do
+    context 'GET /spaces/id' do
+      it 'should link to invidual space' do
+        response = get('/spaces/3')
+        expect(response.status).to eq(200)
+        expect(response.body).to include('Sloth Cave')
+      end
+    end
+  end
+
+    context 'POST /spaces/id' do
+      it 'should populate bookings database' do
+      post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
+      response = post('/spaces/1',
+        space_id: 1,
+        booking_date: '10/10/2022',
+        pending_confirmation: true, 
+        confirmed: false
+      )
+      expect(response.status).to eq(200)
+      expect(response.body).to include("Booking request has been sent.")
+      end
+      end
 
   context 'User logs out' do
     context 'GET /logout' do
@@ -107,7 +130,8 @@ describe ApplicationController do
     end
 
     context 'POST /spaces/new' do
-      xit 'Successfully adds new space to spaces' do
+      it 'Successfully adds new space to spaces' do
+        post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
         response = post('/spaces/new',
         space_name: 'Jungle retreat',
         description: 'A lovely place in the jungle with a waterfall',
@@ -115,12 +139,12 @@ describe ApplicationController do
         available_from: '12/10/2022',
         available_to: '12/07/2023'
         )
-
         expect(response.status).to eq(200)
         expect(response.body).to include('Success! Jungle retreat has been created.')
       end
     
-      xit 'Fails to add new space to spaces' do
+      it 'Fails to add new space to spaces' do
+        post('/login', email: 'slothy@gmail.com', password: 'Sloths1234!')
         response = post('/spaces/new',
         space_name: '',
         description: 'A lovely place in the jungle with a waterfall',
@@ -133,7 +157,6 @@ describe ApplicationController do
         expect(response.body).to include("Space name can't be blank")
       end
     end
-  end
 
   context 'returns request page' do
     it 'returns page' do
