@@ -18,6 +18,7 @@ def reset_test_data
   Space.create(user_id: 2, space_name: "Sloth Cave", description: "Rural, open plan Sloth safe space", price_per_night: 10, available_from: "15/08/2022", available_to: "16/08/2022")
   User.new(username: "Slothy900", email: "slothy@gmail.com", full_name: "Slothy McSloth", password: "Sloths1234!", phone_number: "7387363626" ).save
   User.new(username: "Slothster", email: "slothguy@gmail.com", full_name: "Sloth McSlothster", password: "Sloths1234567!", phone_number: "7387866363626" ).save
+  Booking.create(user_id: 1, space_id: 1, booking_date: "10/10/2022", pending_confirmation: nil, confirmed: nil)
 
 end
 

@@ -9,6 +9,10 @@ describe ApplicationController do
 
   let(:app) { ApplicationController.new }
 
+  before(:each) do
+    reset_test_data
+  end
+
   context 'User creates account' do
     context 'GET /signup' do
       it 'should return the page' do
@@ -141,3 +145,22 @@ describe ApplicationController do
   end
 end
 
+  context 'returns request page' do
+    it 'returns page' do
+      post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+      response = get('/requests')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('Booking date:')
+      expect(response.body).to include('Confirmation pending')
+    end
+
+    it 'displays requests that have been received' do
+      post('/login', :email => 'slothy@gmail.com', :password => 'Sloths1234!')
+      response = get('/requests')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include("2022-10-10")
+    end
+  end
+end
