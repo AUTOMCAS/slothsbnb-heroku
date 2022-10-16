@@ -1,8 +1,6 @@
 ### We are team Sloths
 
-Bearing in mind the EQ learning we’ve done with Dana and elsewhere, we want to foster a good team to work in
-
-(Hint: this may help) 
+Bearing in mind the EQ learning we’ve done with Dana and elsewhere, we want to foster a good team to work in.
 
 We plan to meet
 - At 10am for morning standup
