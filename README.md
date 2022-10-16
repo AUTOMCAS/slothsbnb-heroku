@@ -23,8 +23,8 @@ Pages allowing the user to view bookings and their confirmation status.
 
 ### Planning
 - [Excalidraw](https://excalidraw.com/#json=J8SSwXHE1R2UpSInzUdMQ,mVChugUW_oC2tYtQVgXLtA)
-- [Trello](https://github.com/JoeOsborne77/makersbnb-ruby-seed/slothbnb_trello.jpg)
-- [Team charter](https://github.com/JoeOsborne77/makersbnb-ruby-seed/team_charter.md)
+- [Trello](https://github.com/JoeOsborne77/makersbnb-ruby-seed/blob/main/slothbnb_trello.png)
+- [Team charter](https://github.com/JoeOsborne77/makersbnb-ruby-seed/blob/main/team_charter.md)
 
 
 ### Gems used:
