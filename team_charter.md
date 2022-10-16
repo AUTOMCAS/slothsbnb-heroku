@@ -1,0 +1,26 @@
+### We are team Sloths
+
+Bearing in mind the EQ learning we’ve done with Dana and elsewhere, we want to foster a good team to work in
+
+(Hint: this may help) 
+
+We plan to meet
+- At 10am for morning standup
+- At 2pm for afternoon standup
+- At 5pm for a retro at the end of the day
+
+We value:
+- Fun! 
+- Honesty
+- Compassion
+- Learning
+(in that order)
+
+We will have a nominated leader/spokesperson which will rotate daily
+- Mon: Joe
+- Tue: Ollie
+- Wed: Kate
+- Thu: Chris
+- Fri: Joe/all
+
+When we are upset we will raise it immediately in the Slack channel, separating the facts and the story as far as we are able, and giving actionable, specific and kind feedback as appropriate!

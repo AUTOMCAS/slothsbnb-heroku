@@ -1,10 +1,45 @@
-# MakersBnB Project Seed
+# SlothsBnB
+### The first Makers group project.
 
-This repo contains the seed codebase for the MakersBnB project in Ruby (using Sinatra and RSpec).
+Hello from Joe, Kate, Ollie & Chris.
 
-Someone in your team should fork this seed repo to their Github account. Everyone in the team should then clone this fork to their local machine to work on it.
 
-## Setup
+### Project specification
+We would like a web application that allows users to list spaces they have available, and to hire spaces for the night. [Full specification here.](https://github.com/makersacademy/engineering-project-1/blob/main/specification.md)
+
+
+
+### Initial MVP
+A product allowing us to explore the process and challenges of our first group project. 
+
+A product allowing a user to view spaces which are stored on a database.
+
+
+### Accomplished product
+A login/out system using sessions
+Storage of users, spaces and bookings in a database
+Pages allowing user to create and view spaces.
+Pages allowing the user to view bookings and their confirmation status.
+
+### Planning
+- [Excalidraw](https://excalidraw.com/#json=J8SSwXHE1R2UpSInzUdMQ,mVChugUW_oC2tYtQVgXLtA)
+- [Trello](https://github.com/JoeOsborne77/makersbnb-ruby-seed/slothbnb_trello.jpg)
+- [Team charter](https://github.com/JoeOsborne77/makersbnb-ruby-seed/team_charter.md)
+
+
+### Gems used:
+- ActiveRecord
+- Pry
+- Sinatra (including sessions)
+- bcrypt for password encryption
+- Rspec
+- Rake
+- PostgreSQL (PG)
+- Rake
+- require_all
+
+
+### Setup
 
 ```bash
 # Install gems
