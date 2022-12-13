@@ -35,7 +35,6 @@ Pages allowing the user to view bookings and their confirmation status.
 - Rspec
 - Rake
 - PostgreSQL (PG)
-- Rake
 - require_all
 
 
